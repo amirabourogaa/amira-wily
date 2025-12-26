@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amira & Wily - 1er Janvier 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fef9f5;
+            color: #5d4037;
+            overflow-x: hidden;
+        }
+        
+        .dancing-font {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .playfair-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .slide {
+            display: none;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .slide.active {
+            display: block;
+            animation: fadeIn 1.5s;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Style pour le contrôle audio */
+        .audio-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .audio-control:hover {
+            background-color: white;
+            transform: scale(1.1);
+        }
+        
+        .audio-control i {
+            font-size: 24px;
+            color: #a8715f;
+        }
+        
+        /* Style pour les points du slider */
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .slider-dot.active {
+            background-color: white;
+        }
+        
+        /* Animation de confettis */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            opacity: 0;
+            z-index: 1;
+        }
+        
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(1000px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="relative">
+    <!-- Contrôle audio -->
+    <div class="audio-control" id="audioControl">
+        <i class="fas fa-volume-up"></i>
+    </div>
+    
+    <!-- Audio de fond -->
+    <audio id="backgroundMusic" loop>
+        <source src="wedding.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+    </audio>
+    
+    <!-- Section principale -->
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 md:p-8 relative overflow-hidden">
+        <!-- Confettis -->
+        <div id="confettiContainer"></div>
+        
+        <!-- En-tête -->
+        <header class="text-center mb-8 md:mb-12 relative z-10">
+            <h1 class="dancing-font text-4xl md:text-6xl lg:text-7xl text-[#a8715f] mb-2 heartbeat">
+                Amira & Wael
+            </h1>
+            <div class="flex justify-center items-center mb-4">
+                <div class="h-1 w-16 md:w-24 bg-[#a8715f]"></div>
+                <i class="fas fa-heart mx-4 text-[#a8715f] text-xl"></i>
+                <div class="h-1 w-16 md:w-24 bg-[#a8715f]"></div>
+            </div>
+            <h2 class="playfair-font text-2xl md:text-3xl italic text-[#8d6e63]">
+                Vous invitent à célébrer leur union
+            </h2>
+        </header>
+        
+        <!-- Contenu principal -->
+        <main class="w-full max-w-6xl flex flex-col lg:flex-row items-center justify-between relative z-10">
+            <!-- Section gauche - Informations -->
+            <div class="lg:w-1/2 p-6 md:p-8 text-center lg:text-left">
+                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg border border-white/20 mb-8">
+                    <div class="flex justify-center lg:justify-start items-center mb-6">
+                        <div class="text-center lg:text-left">
+                            <div class="flex items-center justify-center lg:justify-start mb-2">
+                                <i class="far fa-calendar-alt text-[#a8715f] text-xl mr-3"></i>
+                                <h3 class="playfair-font text-2xl font-bold text-[#5d4037]">Date</h3>
+                            </div>
+                            <p class="text-xl md:text-2xl text-[#8d6e63]">1er Janvier 2026</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center lg:justify-start items-center mb-6">
+                        <div class="text-center lg:text-left">
+                            <div class="flex items-center justify-center lg:justify-start mb-2">
+                                <i class="far fa-clock text-[#a8715f] text-xl mr-3"></i>
+                                <h3 class="playfair-font text-2xl font-bold text-[#5d4037]">Heure</h3>
+                            </div>
+                            <p class="text-xl md:text-2xl text-[#8d6e63]">À partir de 15:00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center lg:justify-start items-start mb-8">
+                        <div class="text-center lg:text-left">
+                            <div class="flex items-center justify-center lg:justify-start mb-2">
+                                <i class="fas fa-map-marker-alt text-[#a8715f] text-xl mr-3"></i>
+                                <h3 class="playfair-font text-2xl font-bold text-[#5d4037]">Lieu</h3>
+                            </div>
+                            <p class="text-xl md:text-2xl text-[#8d6e63]">Nejmet Lemdina à la Kasbah</p>
+                            <p class="text-lg text-[#8d6e63] mt-2">Tunis, Tunisie</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 pt-6 border-t border-[#a8715f]/30">
+                        <p class="text-lg md:text-xl text-[#5d4037] italic mb-4">
+                            "Le bonheur n'est pas quelque chose que l'on reporte à plus tard ; 
+                            il est quelque chose que l'on conçoit pour le présent."
+                        </p>
+                        <p class="dancing-font text-2xl md:text-3xl text-[#a8715f]">
+                            Nous avons hâte de partager ce moment avec vous !
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Compteur de jours -->
+                <div class="bg-gradient-to-r from-[#a8715f] to-[#8d6e63] rounded-2xl p-6 text-white shadow-lg">
+                    <h3 class="playfair-font text-2xl font-bold mb-4 text-center">Compte à rebours</h3>
+                    <div id="countdown" class="flex justify-center space-x-4 md:space-x-8">
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold" id="days">00</div>
+                            <div class="text-sm md:text-base">Jours</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold" id="hours">00</div>
+                            <div class="text-sm md:text-base">Heures</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold" id="minutes">00</div>
+                            <div class="text-sm md:text-base">Minutes</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl md:text-4xl font-bold" id="seconds">00</div>
+                            <div class="text-sm md:text-base">Secondes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+          <!-- Section droite - Slider avec photos -->
+<div class="lg:w-1/2 p-4 md:p-6">
+    <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+        <!-- Slider container -->
+        <div id="slider" class="relative h-80 md:h-96 lg:h-[500px]">
+            <!-- Slide 1 - Photo couple -->
+            <div class="slide active absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center flex items-center justify-center relative" 
+                     style="background-image: url('couple.jpeg')">
+                    <!-- Overlay sombre pour mieux lire le texte -->
+                    <div class="absolute inset-0 bg-black/40"></div>
+                    <div class="relative z-10 text-center text-white p-6">
+                        <div class="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-heart text-3xl"></i>
+                        </div>
+                        <h3 class="playfair-font text-3xl md:text-5xl mb-2 dancing-font">Amira & Wael</h3>
+                        <p class="text-xl md:text-2xl">1er Janvier 2026</p>
+                        <div class="mt-6 flex justify-center">
+                            <div class="h-px w-16 bg-white/60"></div>
+                            <i class="fas fa-heart mx-4 text-white/80"></i>
+                            <div class="h-px w-16 bg-white/60"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2 - Photo lieu -->
+            <div class="slide absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center flex items-center justify-center relative"
+                     style="background-image: url('nejma.webp')">
+                    <!-- Overlay avec dégradé -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                    <div class="relative z-10 text-center text-white p-8">
+                        <div class="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-glass-cheers text-3xl"></i>
+                        </div>
+                        <h3 class="playfair-font text-3xl md:text-4xl mb-3">Cérémonie & Réception</h3>
+                        <div class="space-y-2">
+                            <p class="text-xl md:text-2xl flex items-center justify-center">
+                                <i class="far fa-clock mr-3"></i> À partir de 15:00
+                            </p>
+                            <p class="text-xl md:text-2xl flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt mr-3"></i> Nejmet Lemdina à la Kasbah
+                            </p>
+                        </div>
+                        <div class="mt-6 bg-white/20 backdrop-blur-sm rounded-lg p-4 inline-block">
+                            <p class="text-lg">Tunis, Tunisie</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3 - Photo fête -->
+            <div class="slide absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center flex items-center justify-center relative"
+                     style="background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <!-- Overlay avec dégradé coloré -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-[#a8715f]/60 to-[#8d6e63]/60"></div>
+                    <div class="relative z-10 text-center text-white p-8">
+                        <div class="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-music text-3xl"></i>
+                        </div>
+                        <h3 class="playfair-font text-3xl md:text-4xl mb-4">Animation & Musique</h3>
+                        <div class="space-y-3 max-w-md mx-auto">
+                          
+                            <p class="text-lg md:text-xl">
+                                avec musique live et divertissement
+                            </p>
+                        </div>
+                        <div class="mt-8 flex justify-center space-x-6">
+                            <div class="text-center">
+                                <i class="fas fa-guitar text-2xl mb-2"></i>
+                                <p class="text-sm">Musique Live</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fas fa-drum text-2xl mb-2"></i>
+                                <p class="text-sm">Animation</p>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4 - Photo célébration -->
+            <div class="slide absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center flex items-center justify-center relative"
+                     style="background-image: url('nejma.webp')">
+                    <!-- Overlay avec dégradé radial -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent"></div>
+                    <div class="relative z-10 text-center text-white p-8">
+                        <div class="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-users text-3xl"></i>
+                        </div>
+                        <h3 class="playfair-font text-3xl md:text-4xl mb-4">Partagez notre joie</h3>
+                        <p class="text-xl md:text-2xl mb-6 max-w-md mx-auto bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                            Votre présence est le plus beau cadeau
+                        </p>
+                        <div class="mt-8">
+                            <p class="dancing-font text-3xl md:text-5xl mb-2">Amira & Wael</p>
+                            <div class="flex justify-center items-center mt-4">
+                                <div class="h-px w-12 bg-white/60"></div>
+                                <i class="fas fa-heart mx-4 text-white/80"></i>
+                                <div class="h-px w-12 bg-white/60"></div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <p class="text-lg italic">Nous avons hâte de célébrer avec vous</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5 - Photo décorations -->
+            <div class="slide absolute inset-0 w-full h-full">
+                <div class="w-full h-full bg-cover bg-center flex items-center justify-center relative"
+                     style="background-image: url('https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+                    <!-- Overlay doré -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#a8715f]/70 via-[#d4a574]/50 to-[#8d6e63]/70"></div>
+                    <div class="relative z-10 text-center text-white p-8">
+                        <div class="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-ring text-3xl"></i>
+                        </div>
+                        <h3 class="playfair-font text-3xl md:text-4xl mb-4">Un Jour Inoubliable</h3>
+                        <div class="space-y-4 max-w-md mx-auto">
+                            <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                                <p class="text-xl">Cérémonie traditionnelle</p>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                                <p class="text-xl">Réception festive</p>
+                            </div>
+                            <div class="bg-white/20 backdrop-blur-sm p-4 rounded-lg">
+                                <p class="text-xl">Souvenirs éternels</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 dancing-font text-2xl md:text-3xl">
+                            Le début de notre histoire...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contrôles du slider -->
+        <div class="absolute bottom-4 left-0 right-0 flex justify-center z-20">
+            <div class="flex">
+                <div class="slider-dot active" data-index="0"></div>
+                <div class="slider-dot" data-index="1"></div>
+                <div class="slider-dot" data-index="2"></div>
+                <div class="slider-dot" data-index="3"></div>
+                <div class="slider-dot" data-index="4"></div>
+            </div>
+        </div>
+        
+        <!-- Boutons de navigation du slider -->
+        <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-[#5d4037] w-10 h-10 rounded-full flex items-center justify-center z-20 transition-all duration-300 shadow-lg">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-[#5d4037] w-10 h-10 rounded-full flex items-center justify-center z-20 transition-all duration-300 shadow-lg">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        
+        <!-- Indicateur de slide -->
+        <div class="absolute top-4 right-4 bg-black/50 text-white text-sm px-3 py-1 rounded-full z-20 backdrop-blur-sm">
+            <span id="currentSlide">1</span> / <span id="totalSlides">5</span>
+        </div>
+    </div>
+    
+    <!-- Légende des photos -->
+    <div class="mt-6 text-center text-[#8d6e63] text-sm">
+        <p class="mb-2"><i class="fas fa-images mr-2"></i> Découvrez les moments forts de notre journée</p>
+        <p class="text-xs opacity-75">Utilisez les flèches ou cliquez sur les points pour naviguer</p>
+    </div>
+</div>
+
+<script>
+    // Mise à jour du script pour gérer 5 slides
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const currentSlideElement = document.getElementById('currentSlide');
+        const totalSlidesElement = document.getElementById('totalSlides');
+        let currentSlide = 0;
+        
+        // Mettre à jour le total des slides
+        totalSlidesElement.textContent = slides.length;
+        
+        function showSlide(index) {
+            // Masquer toutes les slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Désactiver tous les points
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Afficher la slide active et activer le point correspondant
+            slides[index].classList.add('active');
+            if (dots[index]) {
+                dots[index].classList.add('active');
+            }
+            
+            // Mettre à jour l'indicateur de slide
+            currentSlide = index;
+            currentSlideElement.textContent = index + 1;
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Événements pour les boutons du slider
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // Événements pour les points du slider
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Changement automatique de slide toutes les 6 secondes
+        let slideInterval = setInterval(nextSlide, 6000);
+        
+        // Arrêter le défilement automatique quand l'utilisateur interagit avec le slider
+        const sliderContainer = document.getElementById('slider');
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 6000);
+        });
+        
+        // Initialiser l'affichage
+        showSlide(0);
+        
+        // Effet de parallaxe subtil pour les images de fond
+        sliderContainer.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 20;
+            const y = (e.clientY / window.innerHeight) * 20;
+            
+            const activeSlide = sliderContainer.querySelector('.slide.active');
+            if (activeSlide) {
+                const bgDiv = activeSlide.querySelector('div[style*="background-image"]');
+                if (bgDiv) {
+                    bgDiv.style.transform = `translate(${x}px, ${y}px) scale(1.05)`;
+                }
+            }
+        });
+        
+        sliderContainer.addEventListener('mouseleave', () => {
+            const activeSlide = sliderContainer.querySelector('.slide.active');
+            if (activeSlide) {
+                const bgDiv = activeSlide.querySelector('div[style*="background-image"]');
+                if (bgDiv) {
+                    bgDiv.style.transform = 'translate(0, 0) scale(1)';
+                    bgDiv.style.transition = 'transform 1.5s ease-out';
+                }
+            }
+        });
+    });
+</script>
+
+<style>
+    /* Animation pour le changement de slide */
+    .slide {
+        transition: opacity 1.2s ease-in-out;
+    }
+    
+    .slide.active {
+        animation: slideFadeIn 1.2s ease-out;
+    }
+    
+    @keyframes slideFadeIn {
+        0% { opacity: 0; transform: scale(1.05); }
+        100% { opacity: 1; transform: scale(1); }
+    }
+    
+    /* Style amélioré pour les points du slider */
+    .slider-dot {
+        width: 10px;
+        height: 10px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        margin: 0 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+    
+    .slider-dot.active {
+        background-color: white;
+        width: 12px;
+        height: 12px;
+        border-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+    
+    .slider-dot:hover {
+        background-color: rgba(255, 255, 255, 0.9);
+        transform: scale(1.2);
+    }
+    
+    /* Animation pour les images de fond */
+    .slide > div:first-child {
+        transition: transform 10s ease-out;
+    }
+    
+    /* Style pour les boutons de navigation */
+    #prevBtn, #nextBtn {
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .relative:hover #prevBtn,
+    .relative:hover #nextBtn {
+        opacity: 1;
+    }
+    
+    #prevBtn:hover, #nextBtn:hover {
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+</style>
+        </main>
+        
+        <!-- Section RSVP -->
+      <!-- Section RSVP avec Envoi par Email -->
+<div class="mt-12 md:mt-16 w-full max-w-3xl relative z-10">
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg border border-white/20">
+        <h3 class="playfair-font text-3xl font-bold text-center text-[#5d4037] mb-8">
+            <i class="far fa-envelope mr-3"></i> Confirmez votre présence
+        </h3>
+        
+        <div class="bg-gradient-to-br from-[#f8f4f0] to-white rounded-xl p-6 md:p-8 shadow-md border border-[#e3c9b4]/30">
+            <!-- Message d'instructions -->
+            <div class="mb-8 p-4 bg-blue-50 border border-blue-100 rounded-lg">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-info-circle text-blue-500 text-xl mt-1"></i>
+                    </div>
+                    <div class="ml-3">
+                        <h4 class="text-lg font-medium text-blue-800">Comment fonctionne l'envoi par email</h4>
+                        <p class="mt-1 text-blue-700">
+                            Après avoir rempli le formulaire ci-dessous, vos informations seront envoyées directement aux mariés par email. 
+                            Vous recevrez une confirmation par email dans les minutes qui suivent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Formulaire de confirmation -->
+            <form id="rsvpForm" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="firstName" class="block text-[#5d4037] font-medium mb-2">
+                            <i class="fas fa-user mr-2"></i> Prénom *
+                        </label>
+                        <input type="text" id="firstName" required
+                            class="w-full px-4 py-3 rounded-lg border border-[#d7ccc8] focus:border-[#a8715f] focus:ring-2 focus:ring-[#a8715f]/20 outline-none transition-all duration-300"
+                            placeholder="Votre prénom">
+                    </div>
+                    
+                    <div>
+                        <label for="lastName" class="block text-[#5d4037] font-medium mb-2">
+                            <i class="fas fa-user mr-2"></i> Nom *
+                        </label>
+                        <input type="text" id="lastName" required
+                            class="w-full px-4 py-3 rounded-lg border border-[#d7ccc8] focus:border-[#a8715f] focus:ring-2 focus:ring-[#a8715f]/20 outline-none transition-all duration-300"
+                            placeholder="Votre nom">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="guestEmail" class="block text-[#5d4037] font-medium mb-2">
+                        <i class="fas fa-envelope mr-2"></i> Adresse email *
+                    </label>
+                    <input type="email" id="guestEmail" required
+                        class="w-full px-4 py-3 rounded-lg border border-[#d7ccc8] focus:border-[#a8715f] focus:ring-2 focus:ring-[#a8715f]/20 outline-none transition-all duration-300"
+                        placeholder="votre.email@exemple.com">
+                </div>
+                
+                <div>
+                    <label for="guestPhone" class="block text-[#5d4037] font-medium mb-2">
+                        <i class="fas fa-phone mr-2"></i> Téléphone *
+                    </label>
+                    <input type="tel" id="guestPhone" required
+                        class="w-full px-4 py-3 rounded-lg border border-[#d7ccc8] focus:border-[#a8715f] focus:ring-2 focus:ring-[#a8715f]/20 outline-none transition-all duration-300"
+                        placeholder="Votre numéro de téléphone">
+                </div>
+                
+                <div>
+                    <label class="block text-[#5d4037] font-medium mb-2">
+                        <i class="fas fa-users mr-2"></i> Nombre de personnes *
+                    </label>
+                    <div class="flex items-center space-x-4">
+                        <button type="button" id="decreaseGuests" class="w-10 h-10 rounded-full bg-[#f8f4f0] border border-[#d7ccc8] flex items-center justify-center text-[#5d4037] hover:bg-[#e3c9b4] transition-all duration-300">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="number" id="guestCount" min="1" max="10" value="1" readonly
+                            class="w-16 text-center px-3 py-2 rounded-lg border border-[#d7ccc8] bg-white font-bold text-[#5d4037]">
+                        <button type="button" id="increaseGuests" class="w-10 h-10 rounded-full bg-[#f8f4f0] border border-[#d7ccc8] flex items-center justify-center text-[#5d4037] hover:bg-[#e3c9b4] transition-all duration-300">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                        <span class="text-[#8d6e63] ml-2">personne(s)</span>
+                    </div>
+                </div>
+                
+                <!-- Noms des personnes supplémentaires -->
+                <div id="additionalGuestsSection" class="hidden">
+                    <label class="block text-[#5d4037] font-medium mb-3">
+                        <i class="fas fa-user-friends mr-2"></i> Noms des personnes supplémentaires
+                    </label>
+                    <div id="additionalGuestsContainer" class="space-y-4">
+                        <!-- Les champs supplémentaires seront ajoutés ici dynamiquement -->
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-[#5d4037] font-medium mb-3">
+                        <i class="fas fa-calendar-check mr-2"></i> Réponse *
+                    </label>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <input type="radio" id="confirmYes" name="attendance" value="yes" checked class="hidden">
+                            <label for="confirmYes" class="rsvp-option flex items-center justify-center p-4 rounded-xl border-2 border-[#a8715f] bg-[#a8715f]/10 cursor-pointer hover:bg-[#a8715f]/20 transition-all duration-300">
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 rounded-full border-2 border-[#a8715f] flex items-center justify-center mr-3">
+                                        <div class="w-3 h-3 rounded-full bg-[#a8715f]"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-[#5d4037]">Je serai présent(e)</div>
+                                        <div class="text-sm text-[#8d6e63]">Avec grand plaisir</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div>
+                            <input type="radio" id="confirmNo" name="attendance" value="no" class="hidden">
+                            <label for="confirmNo" class="rsvp-option flex items-center justify-center p-4 rounded-xl border-2 border-[#d7ccc8] bg-[#f8f4f0] cursor-pointer hover:bg-[#e3c9b4]/30 transition-all duration-300">
+                                <div class="flex items-center">
+                                    <div class="w-6 h-6 rounded-full border-2 border-[#8d6e63] flex items-center justify-center mr-3">
+                                        <div class="w-3 h-3 rounded-full bg-transparent"></div>
+                                    </div>
+                                    <div>
+                                        <div class="font-medium text-[#5d4037]">Je ne pourrai pas venir</div>
+                                        <div class="text-sm text-[#8d6e63]">Avec regrets</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="messageSection">
+                    <label for="guestMessage" class="block text-[#5d4037] font-medium mb-2">
+                        <i class="fas fa-comment-dots mr-2"></i> Message pour les mariés
+                    </label>
+                    <textarea id="guestMessage" rows="4"
+                        class="w-full px-4 py-3 rounded-lg border border-[#d7ccc8] focus:border-[#a8715f] focus:ring-2 focus:ring-[#a8715f]/20 outline-none transition-all duration-300"
+                        placeholder="Votre message, félicitations, ou toute information supplémentaire..."></textarea>
+                </div>
+                
+                <!-- Préférences alimentaires -->
+                <div id="dietarySection" class="hidden">
+                    <label class="block text-[#5d4037] font-medium mb-3">
+                        <i class="fas fa-utensils mr-2"></i> Préférences ou restrictions alimentaires
+                    </label>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="vegetarian" class="h-5 w-5 text-[#a8715f] focus:ring-[#a8715f]/20 border-[#d7ccc8] rounded">
+                            <label for="vegetarian" class="ml-3 text-[#5d4037]">Végétarien</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="vegan" class="h-5 w-5 text-[#a8715f] focus:ring-[#a8715f]/20 border-[#d7ccc8] rounded">
+                            <label for="vegan" class="ml-3 text-[#5d4037]">Végan</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="allergies" class="h-5 w-5 text-[#a8715f] focus:ring-[#a8715f]/20 border-[#d7ccc8] rounded">
+                            <label for="allergies" class="ml-3 text-[#5d4037]">Allergies alimentaires</label>
+                        </div>
+                        <div id="allergiesDetails" class="hidden mt-2">
+                            <input type="text" id="allergiesList" 
+                                class="w-full px-4 py-2 rounded-lg border border-[#d7ccc8] focus:border-[#a8715f] focus:ring-1 focus:ring-[#a8715f]/20 outline-none transition-all duration-300"
+                                placeholder="Précisez vos allergies...">
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="otherDiet" class="h-5 w-5 text-[#a8715f] focus:ring-[#a8715f]/20 border-[#d7ccc8] rounded">
+                            <label for="otherDiet" class="ml-3 text-[#5d4037]">Autre (précisez dans le message)</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bouton d'envoi -->
+                <div class="pt-4">
+                    <button type="submit" id="submitBtn" class="w-full py-4 bg-gradient-to-r from-[#a8715f] to-[#8d6e63] text-white rounded-xl font-medium hover:opacity-90 transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center shadow-md">
+                        <i class="fas fa-paper-plane mr-3"></i> Envoyer ma réponse par email
+                    </button>
+                </div>
+                
+                <p class="text-center text-sm text-[#8d6e63] pt-2">
+                    * Champs obligatoires
+                </p>
+            </form>
+            
+            <!-- Message de confirmation (caché par défaut) -->
+            <div id="confirmationMessage" class="hidden mt-6 p-6 bg-green-50 border border-green-100 rounded-lg">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500 text-2xl"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h4 class="text-xl font-bold text-green-800">Merci pour votre réponse !</h4>
+                        <p class="mt-2 text-green-700">
+                            Votre confirmation a bien été envoyée par email à <span class="font-bold">Amira & Wael</span>.
+                            Vous recevrez une copie de votre réponse à l'adresse email que vous avez indiquée.
+                        </p>
+                        <div class="mt-4 flex items-center text-green-600">
+                            <i class="fas fa-envelope mr-2"></i>
+                            <span>Email envoyé à : <span id="sentToEmail" class="font-medium"></span></span>
+                        </div>
+                        <button id="sendNewResponse" class="mt-6 px-6 py-2 bg-green-100 text-green-800 rounded-lg font-medium hover:bg-green-200 transition-all duration-300">
+                            <i class="fas fa-redo mr-2"></i> Envoyer une autre réponse
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      
+        
+        <p class="text-center mt-8 text-[#8d6e63]">
+            <i class="far fa-clock mr-2"></i> Merci de nous répondre avant le 15 Décembre 2025
+        </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    // Initialisation d'EmailJS
+    (function() {
+        emailjs.init("YOUR_PUBLIC_KEY"); // À remplacer avec votre clé publique EmailJS
+    })();
+    
+    // Script pour gérer le formulaire RSVP avec envoi par email
+    document.addEventListener('DOMContentLoaded', function() {
+        // Gestion du nombre de personnes
+        const decreaseBtn = document.getElementById('decreaseGuests');
+        const increaseBtn = document.getElementById('increaseGuests');
+        const guestCountInput = document.getElementById('guestCount');
+        const additionalGuestsSection = document.getElementById('additionalGuestsSection');
+        const additionalGuestsContainer = document.getElementById('additionalGuestsContainer');
+        const dietarySection = document.getElementById('dietarySection');
+        const allergiesCheckbox = document.getElementById('allergies');
+        const allergiesDetails = document.getElementById('allergiesDetails');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        const sentToEmail = document.getElementById('sentToEmail');
+        const sendNewResponseBtn = document.getElementById('sendNewResponse');
+        
+        decreaseBtn.addEventListener('click', function() {
+            let currentCount = parseInt(guestCountInput.value);
+            if (currentCount > 1) {
+                guestCountInput.value = currentCount - 1;
+                updateAdditionalGuestsFields();
+            }
+        });
+        
+        increaseBtn.addEventListener('click', function() {
+            let currentCount = parseInt(guestCountInput.value);
+            if (currentCount < 10) {
+                guestCountInput.value = currentCount + 1;
+                updateAdditionalGuestsFields();
+            }
+        });
+        
+        // Fonction pour mettre à jour les champs des personnes supplémentaires
+        function updateAdditionalGuestsFields() {
+            const guestCount = parseInt(guestCountInput.value);
+            
+            if (guestCount > 1) {
+                additionalGuestsSection.classList.remove('hidden');
+                additionalGuestsContainer.innerHTML = '';
+                
+                for (let i = 1; i < guestCount; i++) {
+                    const guestField = document.createElement('div');
+                    guestField.className = 'guest-field';
+                    guestField.innerHTML = `
+                        <label class="block text-[#5d4037] font-medium mb-2">
+                            Personne ${i + 1}
+                        </label>
+                        <input type="text" id="guest${i + 1}" 
+                            class="w-full px-4 py-3 rounded-lg border border-[#d7ccc8] focus:border-[#a8715f] focus:ring-1 focus:ring-[#a8715f]/20 outline-none transition-all duration-300"
+                            placeholder="Nom et prénom de la personne ${i + 1}">
+                    `;
+                    additionalGuestsContainer.appendChild(guestField);
+                }
+            } else {
+                additionalGuestsSection.classList.add('hidden');
+            }
+        }
+        
+        // Gestion de l'affichage du message et des préférences alimentaires
+        const rsvpOptions = document.querySelectorAll('.rsvp-option');
+        
+        rsvpOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Mettre à jour l'apparence des options
+                rsvpOptions.forEach(opt => {
+                    opt.classList.remove('border-[#a8715f]', 'bg-[#a8715f]/10');
+                    opt.classList.add('border-[#d7ccc8]', 'bg-[#f8f4f0]');
+                    
+                    const radioCircle = opt.querySelector('.w-6.h-6');
+                    const innerCircle = radioCircle.querySelector('.w-3.h-3');
+                    
+                    if (opt === this) {
+                        radioCircle.classList.add('border-[#a8715f]');
+                        innerCircle.classList.add('bg-[#a8715f]');
+                        innerCircle.classList.remove('bg-transparent');
+                    } else {
+                        radioCircle.classList.remove('border-[#a8715f]');
+                        radioCircle.classList.add('border-[#8d6e63]');
+                        innerCircle.classList.remove('bg-[#a8715f]');
+                        innerCircle.classList.add('bg-transparent');
+                    }
+                });
+                
+                // Ajouter la bordure et le fond à l'option sélectionnée
+                this.classList.remove('border-[#d7ccc8]', 'bg-[#f8f4f0]');
+                this.classList.add('border-[#a8715f]', 'bg-[#a8715f]/10');
+                
+                // Afficher/masquer la section des préférences alimentaires
+                const selectedValue = this.querySelector('input').value;
+                if (selectedValue === 'yes') {
+                    dietarySection.classList.remove('hidden');
+                } else {
+                    dietarySection.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Gestion des allergies
+        allergiesCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                allergiesDetails.classList.remove('hidden');
+            } else {
+                allergiesDetails.classList.add('hidden');
+            }
+        });
+        
+        // Gestion de la soumission du formulaire
+        const rsvpForm = document.getElementById('rsvpForm');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        rsvpForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Récupérer les valeurs du formulaire
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('guestEmail').value;
+            const phone = document.getElementById('guestPhone').value;
+            const guestCount = parseInt(document.getElementById('guestCount').value);
+            const attendance = document.querySelector('input[name="attendance"]:checked').value;
+            const message = document.getElementById('guestMessage').value;
+            
+            // Récupérer les noms des personnes supplémentaires
+            const additionalGuests = [];
+            for (let i = 1; i < guestCount; i++) {
+                const guestInput = document.getElementById(`guest${i + 1}`);
+                if (guestInput && guestInput.value) {
+                    additionalGuests.push(guestInput.value);
+                }
+            }
+            
+            // Récupérer les préférences alimentaires
+            const dietaryPreferences = [];
+            if (document.getElementById('vegetarian').checked) dietaryPreferences.push('Végétarien');
+            if (document.getElementById('vegan').checked) dietaryPreferences.push('Végan');
+            if (document.getElementById('allergies').checked) {
+                const allergies = document.getElementById('allergiesList').value;
+                if (allergies) dietaryPreferences.push(`Allergies: ${allergies}`);
+            }
+            if (document.getElementById('otherDiet').checked) dietaryPreferences.push('Autre (voir message)');
+            
+            // Désactiver le bouton d'envoi
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-3"></i> Envoi en cours...';
+            
+            try {
+                // Préparer les données pour l'email
+                const templateParams = {
+                    to_name: "Amira & Wael",
+                    from_name: `${firstName} ${lastName}`,
+                    from_email: email,
+                    phone: phone,
+                    guest_count: guestCount,
+                    additional_guests: additionalGuests.join(', ') || 'Aucune',
+                    attendance: attendance === 'yes' ? 'Présent(e)' : 'Absent(e)',
+                    dietary_preferences: dietaryPreferences.join(', ') || 'Aucune',
+                    message: message || 'Aucun message',
+                    wedding_date: "1er Janvier 2026",
+                    reply_date: new Date().toLocaleDateString('fr-FR'),
+                    subject: `RSVP Mariage - ${firstName} ${lastName}`
+                };
+                
+                // Envoyer l'email via EmailJS
+                const response = await emailjs.send(
+                    'YOUR_SERVICE_ID', // À remplacer avec votre Service ID
+                    'YOUR_TEMPLATE_ID', // À remplacer avec votre Template ID
+                    templateParams
+                );
+                
+                console.log('Email envoyé avec succès!', response.status, response.text);
+                
+                // Afficher le message de confirmation
+                sentToEmail.textContent = email;
+                confirmationMessage.classList.remove('hidden');
+                rsvpForm.classList.add('hidden');
+                
+                // Générer des confettis si confirmation de présence
+                if (attendance === 'yes') {
+                    generateConfetti();
+                }
+                
+            } catch (error) {
+                console.error('Erreur lors de l\'envoi de l\'email:', error);
+                
+                // Afficher un message d'erreur
+                alert('Une erreur est survenue lors de l\'envoi de votre réponse. Veuillez réessayer ou contacter directement les mariés.');
+                
+                // Réactiver le bouton d'envoi
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-3"></i> Envoyer ma réponse par email';
+            }
+        });
+        
+        // Gestion du bouton "Envoyer une autre réponse"
+        sendNewResponseBtn.addEventListener('click', function() {
+            confirmationMessage.classList.add('hidden');
+            rsvpForm.classList.remove('hidden');
+            rsvpForm.reset();
+            document.getElementById('guestCount').value = 1;
+            updateAdditionalGuestsFields();
+            dietarySection.classList.add('hidden');
+            allergiesDetails.classList.add('hidden');
+            
+            // Réinitialiser l'apparence des options RSVP
+            rsvpOptions.forEach(opt => {
+                const input = opt.querySelector('input');
+                if (input.value === 'yes') {
+                    opt.classList.remove('border-[#d7ccc8]', 'bg-[#f8f4f0]');
+                    opt.classList.add('border-[#a8715f]', 'bg-[#a8715f]/10');
+                } else {
+                    opt.classList.remove('border-[#a8715f]', 'bg-[#a8715f]/10');
+                    opt.classList.add('border-[#d7ccc8]', 'bg-[#f8f4f0]');
+                }
+            });
+            
+            // Réactiver le bouton d'envoi
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-3"></i> Envoyer ma réponse par email';
+        });
+        
+        // Initialiser les champs supplémentaires si nécessaire
+        updateAdditionalGuestsFields();
+    });
+</script>
+        
+        <!-- Pied de page -->
+        <footer class="mt-12 md:mt-16 text-center text-[#8d6e63] relative z-10">
+            <p class="mb-2">Avec tout notre amour, Amira & Wael</p>
+            <p class="text-sm">© 2025 - Tous droits réservés</p>
+        </footer>
+    </div>
+
+    <script>
+        // Initialisation de la musique de fond
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const audioControl = document.getElementById('audioControl');
+        const audioIcon = audioControl.querySelector('i');
+        
+        // Lecture automatique avec gestion des restrictions des navigateurs
+        document.addEventListener('DOMContentLoaded', function() {
+            // Créer un événement de premier clic pour activer l'audio
+            const enableAudio = () => {
+                backgroundMusic.volume = 0.3;
+                backgroundMusic.play().then(() => {
+                    console.log("Musique démarrée automatiquement");
+                    audioIcon.className = "fas fa-volume-up";
+                    // Retirer l'écouteur après le premier clic
+                    document.removeEventListener('click', enableAudio);
+                }).catch(error => {
+                    console.log("Lecture automatique bloquée: ", error);
+                    // Afficher un message pour l'utilisateur
+                    audioIcon.className = "fas fa-volume-mute";
+                });
+            };
+            
+            // Écouter le premier clic sur la page pour activer l'audio
+            document.addEventListener('click', enableAudio);
+            
+            // Générer des confettis
+            generateConfetti();
+        });
+        
+        // Contrôle de la musique
+        audioControl.addEventListener('click', function() {
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                audioIcon.className = "fas fa-volume-up";
+            } else {
+                backgroundMusic.pause();
+                audioIcon.className = "fas fa-volume-mute";
+            }
+        });
+        
+        // Gestion du slider
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            // Masquer toutes les slides
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            
+            // Désactiver tous les points
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+            });
+            
+            // Afficher la slide active et activer le point correspondant
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        // Événements pour les boutons du slider
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        
+        // Événements pour les points du slider
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+        
+        // Changement automatique de slide toutes les 5 secondes
+        let slideInterval = setInterval(nextSlide, 5000);
+        
+        // Arrêter le défilement automatique quand l'utilisateur interagit avec le slider
+        const sliderContainer = document.getElementById('slider');
+        sliderContainer.addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+        
+        sliderContainer.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+        
+        // Compteur de jours jusqu'au mariage
+        function updateCountdown() {
+            const weddingDate = new Date('January 1, 2026 15:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = weddingDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById('days').textContent = days.toString().padStart(2, '0');
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                document.getElementById('countdown').innerHTML = 
+                    '<p class="text-2xl dancing-font">Le grand jour est arrivé !</p>';
+            }
+        }
+        
+        // Mettre à jour le compteur toutes les secondes
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // Appel initial
+        
+        // Gestion des boutons de réponse
+        document.getElementById('confirmBtn').addEventListener('click', function() {
+            alert('Merci pour votre confirmation ! Nous avons hâte de vous voir le jour J. ❤️');
+            generateConfetti();
+        });
+        
+        document.getElementById('regretBtn').addEventListener('click', function() {
+            alert('Nous sommes désolés de ne pas pouvoir vous compter parmi nous. Merci pour votre réponse.');
+        });
+        
+        // Fonction pour générer des confettis
+        function generateConfetti() {
+            const confettiContainer = document.getElementById('confettiContainer');
+            const colors = ['#a8715f', '#8d6e63', '#d7ccc8', '#f8e9d9', '#e3c9b4'];
+            
+            // Créer 50 confettis
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Position aléatoire
+                const left = Math.random() * 100;
+                const size = Math.random() * 10 + 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Styles du confetti
+                confetti.style.left = `${left}vw`;
+                confetti.style.width = `${size}px`;
+                confetti.style.height = `${size * 2}px`;
+                confetti.style.backgroundColor = color;
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                
+                // Animation avec durée et délai aléatoires
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 2;
+                
+                confetti.style.animation = `fall ${duration}s linear ${delay}s forwards`;
+                
+                confettiContainer.appendChild(confetti);
+                
+                // Supprimer le confetti après l'animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, (duration + delay) * 1000);
+            }
+        }
+        
+        // Générer des confettis toutes les 10 secondes
+        setInterval(generateConfetti, 10000);
+    </script>
+</body>
+</html>
