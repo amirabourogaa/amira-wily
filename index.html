@@ -56,7 +56,6 @@
             100% { transform: scale(1); }
         }
         
-        /* Style pour le contrôle audio */
         .audio-control {
             position: fixed;
             bottom: 20px;
@@ -84,7 +83,6 @@
             color: #a8715f;
         }
         
-        /* Style pour les points du slider */
         .slider-dot {
             width: 12px;
             height: 12px;
@@ -99,7 +97,6 @@
             background-color: white;
         }
         
-        /* Animation de confettis */
         .confetti {
             position: absolute;
             width: 10px;
@@ -119,7 +116,6 @@
             }
         }
 
-        /* Styles pour le formulaire moderne */
         .form-container {
             animation: floatIn 0.8s ease-out;
         }
@@ -216,7 +212,6 @@
             }
         }
 
-        /* Animation pour la validation */
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
@@ -227,7 +222,6 @@
             animation: shake 0.5s ease-in-out;
         }
 
-        /* Animation pour le succès */
         @keyframes successPulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.05); }
@@ -238,7 +232,6 @@
             animation: successPulse 1s ease-in-out;
         }
 
-        /* Loader animation */
         .loader {
             display: inline-block;
             width: 20px;
@@ -253,7 +246,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Floating animation for decorative elements */
         .floating {
             animation: floating 3s ease-in-out infinite;
         }
@@ -263,7 +255,6 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* Styles pour la section iframe */
         .map-iframe-container {
             position: relative;
             transition: all 0.3s ease;
@@ -284,7 +275,6 @@
             filter: grayscale(0%) sepia(0%);
         }
         
-        /* Animation pour les cartes d'information */
         .bg-gradient-to-br {
             transition: all 0.3s ease;
         }
@@ -295,7 +285,6 @@
             border-color: rgba(168, 113, 95, 0.4);
         }
         
-        /* Style pour la liste */
         ul li {
             transition: all 0.2s ease;
             padding: 2px 0;
@@ -306,7 +295,6 @@
             color: #5d4037;
         }
         
-        /* Style pour la zone dépose-minute */
         .bg-gradient-to-r {
             background-size: 200% 200%;
             animation: gradientShift 10s ease infinite;
@@ -318,12 +306,10 @@
             100% { background-position: 0% 50%; }
         }
         
-        /* Style pour les boutons */
         .bg-gradient-to-r.from-\[\#a8715f\].to-\[\#8d6e63\] {
             background-image: linear-gradient(135deg, #a8715f 0%, #8d6e63 100%);
         }
 
-        /* Styles spécifiques pour le formulaire d'avis */
         .star-rating {
             direction: rtl;
             display: inline-block;
@@ -366,8 +352,7 @@
             font-size: 12px;
             color: #8d6e63;
         }
-        
-        /* Style pour les notifications */
+
         .notification {
             position: fixed;
             top: 20px;
@@ -1007,10 +992,23 @@
     </div>
 
     <script>
+        // ============================================
+        // CONFIGURATION EMAILJS - À COMPLÉTER
+        // ============================================
+        // Étape 1: Allez sur https://www.emailjs.com/
+        // Étape 2: Créez un compte gratuit
+        // Étape 3: Connectez votre service email (Gmail/Outlook)
+        // Étape 4: Créez un template avec le code HTML ci-dessous
+        // Étape 5: Remplacez les valeurs ci-dessous par vos clés
+        // ============================================
+
         // Initialisation d'EmailJS
         (function() {
-            // REMPLACEZ CES VALEURS PAR VOS VRAIES CLÉS EMAILJS
-            emailjs.init("YOUR_PUBLIC_KEY"); // Remplacez par votre clé publique
+            // REMPLACEZ "YOUR_PUBLIC_KEY" par votre clé publique EmailJS
+            emailjs.init("YOUR_PUBLIC_KEY");
+            
+            // Testez la connexion
+            console.log("EmailJS initialisé");
         })();
 
         // Fonction pour afficher les notifications
@@ -1019,10 +1017,13 @@
             const notificationMessage = document.getElementById('notificationMessage');
             
             notificationMessage.textContent = message;
-            notification.className = `notification ${type} show`;
+            notification.className = `notification ${type}`;
             
             // Afficher la notification
             notification.classList.remove('hidden');
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 10);
             
             // Masquer la notification après 5 secondes
             setTimeout(() => {
@@ -1040,25 +1041,19 @@
         
         // Lecture automatique avec gestion des restrictions des navigateurs
         document.addEventListener('DOMContentLoaded', function() {
-            // Créer un événement de premier clic pour activer l'audio
             const enableAudio = () => {
                 backgroundMusic.volume = 0.3;
                 backgroundMusic.play().then(() => {
                     console.log("Musique démarrée automatiquement");
                     audioIcon.className = "fas fa-volume-up";
-                    // Retirer l'écouteur après le premier clic
                     document.removeEventListener('click', enableAudio);
                 }).catch(error => {
                     console.log("Lecture automatique bloquée: ", error);
-                    // Afficher un message pour l'utilisateur
                     audioIcon.className = "fas fa-volume-mute";
                 });
             };
             
-            // Écouter le premier clic sur la page pour activer l'audio
             document.addEventListener('click', enableAudio);
-            
-            // Générer des confettis
             generateConfetti();
         });
         
@@ -1082,27 +1077,15 @@
         const totalSlidesElement = document.getElementById('totalSlides');
         let currentSlide = 0;
         
-        // Mettre à jour le total des slides
         totalSlidesElement.textContent = slides.length;
         
         function showSlide(index) {
-            // Masquer toutes les slides
-            slides.forEach(slide => {
-                slide.classList.remove('active');
-            });
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
             
-            // Désactiver tous les points
-            dots.forEach(dot => {
-                dot.classList.remove('active');
-            });
-            
-            // Afficher la slide active et activer le point correspondant
             slides[index].classList.add('active');
-            if (dots[index]) {
-                dots[index].classList.add('active');
-            }
+            if (dots[index]) dots[index].classList.add('active');
             
-            // Mettre à jour l'indicateur de slide
             currentSlide = index;
             currentSlideElement.textContent = index + 1;
         }
@@ -1117,34 +1100,22 @@
             showSlide(currentSlide);
         }
         
-        // Événements pour les boutons du slider
         prevBtn.addEventListener('click', prevSlide);
         nextBtn.addEventListener('click', nextSlide);
         
-        // Événements pour les points du slider
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showSlide(index);
-            });
+            dot.addEventListener('click', () => showSlide(index));
         });
         
-        // Changement automatique de slide toutes les 6 secondes
         let slideInterval = setInterval(nextSlide, 6000);
         
-        // Arrêter le défilement automatique quand l'utilisateur interagit avec le slider
         const sliderContainer = document.getElementById('slider');
-        sliderContainer.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
-        });
+        sliderContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        sliderContainer.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 6000));
         
-        sliderContainer.addEventListener('mouseleave', () => {
-            slideInterval = setInterval(nextSlide, 6000);
-        });
-        
-        // Initialiser l'affichage
         showSlide(0);
         
-        // Effet de parallaxe subtil pour les images de fond
+        // Effet de parallaxe
         sliderContainer.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) * 20;
             const y = (e.clientY / window.innerHeight) * 20;
@@ -1169,7 +1140,7 @@
             }
         });
         
-        // Compteur de jours jusqu'au mariage
+        // Compteur de jours
         function updateCountdown() {
             const weddingDate = new Date('January 1, 2026 15:00:00').getTime();
             const now = new Date().getTime();
@@ -1191,48 +1162,38 @@
             }
         }
         
-        // Mettre à jour le compteur toutes les secondes
         setInterval(updateCountdown, 1000);
-        updateCountdown(); // Appel initial
+        updateCountdown();
         
         // Fonction pour générer des confettis
         function generateConfetti() {
             const confettiContainer = document.getElementById('confettiContainer');
             const colors = ['#a8715f', '#8d6e63', '#d7ccc8', '#f8e9d9', '#e3c9b4'];
             
-            // Créer 50 confettis
             for (let i = 0; i < 50; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
                 
-                // Position aléatoire
                 const left = Math.random() * 100;
                 const size = Math.random() * 10 + 5;
                 const color = colors[Math.floor(Math.random() * colors.length)];
                 
-                // Styles du confetti
                 confetti.style.left = `${left}vw`;
                 confetti.style.width = `${size}px`;
                 confetti.style.height = `${size * 2}px`;
                 confetti.style.backgroundColor = color;
                 confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
                 
-                // Animation avec durée et délai aléatoires
                 const duration = Math.random() * 3 + 2;
                 const delay = Math.random() * 2;
                 
                 confetti.style.animation = `fall ${duration}s linear ${delay}s forwards`;
-                
                 confettiContainer.appendChild(confetti);
                 
-                // Supprimer le confetti après l'animation
-                setTimeout(() => {
-                    confetti.remove();
-                }, (duration + delay) * 1000);
+                setTimeout(() => confetti.remove(), (duration + delay) * 1000);
             }
         }
         
-        // Générer des confettis toutes les 10 secondes
         setInterval(generateConfetti, 10000);
 
         // Gestion du formulaire d'avis avec EmailJS
@@ -1249,7 +1210,6 @@
                 const currentLength = this.value.length;
                 charCount.textContent = currentLength;
                 
-                // Changer la couleur si approche de la limite
                 if (currentLength > 450) {
                     charCount.style.color = '#ef4444';
                 } else if (currentLength > 400) {
@@ -1262,19 +1222,15 @@
             // Gestion du type de message
             radioCards.forEach(card => {
                 card.addEventListener('click', function() {
-                    // Retirer la sélection de toutes les cartes
                     radioCards.forEach(c => {
                         c.classList.remove('selected', 'border-[#a8715f]');
                         c.classList.add('border-[#e3c9b4]');
                     });
                     
-                    // Ajouter la sélection à la carte cliquée
                     this.classList.remove('border-[#e3c9b4]');
                     this.classList.add('selected', 'border-[#a8715f]');
                     
-                    // Mettre à jour la valeur cachée
-                    const type = this.getAttribute('data-type');
-                    messageTypeInput.value = type;
+                    messageTypeInput.value = this.getAttribute('data-type');
                 });
             });
             
@@ -1284,44 +1240,53 @@
                 radioCards[0].classList.add('selected', 'border-[#a8715f]');
             }
             
-            // Gestion de la soumission du formulaire avec EmailJS
+            // Fonction pour traduire le type de message
+            function getMessageTypeText(type) {
+                switch(type) {
+                    case 'wishes': return 'Vœux de félicitations';
+                    case 'advice': return 'Conseil pour le couple';
+                    case 'memory': return 'Souvenir partagé';
+                    default: return 'Message';
+                }
+            }
+            
+            // Fonction pour obtenir la note
+            function getRating() {
+                const selectedStar = document.querySelector('input[name="rating"]:checked');
+                return selectedStar ? selectedStar.value : 'Non noté';
+            }
+            
+            // Gestion de la soumission du formulaire
             adviceForm.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 // Récupérer les valeurs
                 const name = document.getElementById('adviceName').value.trim();
                 const email = document.getElementById('adviceEmail').value.trim();
-                const rating = document.querySelector('input[name="rating"]:checked')?.value || 'Non noté';
+                const rating = getRating();
                 const messageType = messageTypeInput.value;
                 const message = adviceMessage.value.trim();
                 
                 // Validation
                 if (!name || !message) {
-                    // Animation de secousse pour les champs vides
                     if (!name) {
                         document.getElementById('adviceName').classList.add('shake');
-                        setTimeout(() => {
-                            document.getElementById('adviceName').classList.remove('shake');
-                        }, 500);
+                        setTimeout(() => document.getElementById('adviceName').classList.remove('shake'), 500);
                     }
                     if (!message) {
                         document.getElementById('adviceMessage').classList.add('shake');
-                        setTimeout(() => {
-                            document.getElementById('adviceMessage').classList.remove('shake');
-                        }, 500);
+                        setTimeout(() => document.getElementById('adviceMessage').classList.remove('shake'), 500);
                     }
                     return;
                 }
                 
                 if (message.length > 500) {
                     document.getElementById('adviceMessage').classList.add('shake');
-                    setTimeout(() => {
-                        document.getElementById('adviceMessage').classList.remove('shake');
-                    }, 500);
+                    setTimeout(() => document.getElementById('adviceMessage').classList.remove('shake'), 500);
                     return;
                 }
                 
-                // Désactiver le bouton et afficher le loader
+                // Désactiver le bouton
                 adviceSubmitBtn.disabled = true;
                 const originalText = adviceSubmitBtn.innerHTML;
                 adviceSubmitBtn.innerHTML = '<div class="loader mr-3"></div> Envoi en cours...';
@@ -1344,28 +1309,17 @@
                     reply_needed: email ? 'Oui' : 'Non'
                 };
                 
-                // Fonction pour traduire le type de message
-                function getMessageTypeText(type) {
-                    switch(type) {
-                        case 'wishes': return 'Vœux de félicitations';
-                        case 'advice': return 'Conseil pour le couple';
-                        case 'memory': return 'Souvenir partagé';
-                        default: return 'Message';
-                    }
-                }
-                
                 try {
-                    // Envoyer l'email via EmailJS
                     // REMPLACEZ 'YOUR_SERVICE_ID' ET 'YOUR_TEMPLATE_ID' PAR VOS VRAIES VALEURS
                     const response = await emailjs.send(
-                        'YOUR_SERVICE_ID', // Remplacez par votre Service ID
-                        'YOUR_TEMPLATE_ID', // Remplacez par votre Template ID
+                        'YOUR_SERVICE_ID',      // À remplacer
+                        'YOUR_TEMPLATE_ID',     // À remplacer
                         templateParams
                     );
                     
                     console.log('Email envoyé avec succès!', response.status, response.text);
                     
-                    // Afficher notification de succès
+                    // Afficher notification
                     showNotification('Votre message a été envoyé avec succès ! Merci pour vos vœux.', 'success');
                     
                     // Générer des confettis
@@ -1376,7 +1330,7 @@
                     charCount.textContent = '0';
                     charCount.style.color = '#8d6e63';
                     
-                    // Réinitialiser la sélection des cartes
+                    // Réinitialiser la sélection
                     radioCards.forEach(c => {
                         c.classList.remove('selected', 'border-[#a8715f]');
                         c.classList.add('border-[#e3c9b4]');
@@ -1394,9 +1348,7 @@
                     
                 } catch (error) {
                     console.error('Erreur lors de l\'envoi de l\'email:', error);
-                    
-                    // Afficher notification d'erreur
-                    showNotification('Une erreur est survenue. Veuillez réessayer ou nous contacter directement.', 'error');
+                    showNotification('Une erreur est survenue. Veuillez réessayer.', 'error');
                     
                 } finally {
                     // Réactiver le bouton
@@ -1405,7 +1357,7 @@
                 }
             });
             
-            // Animation d'entrée des champs du formulaire
+            // Animation d'entrée
             const formInputs = document.querySelectorAll('.form-input');
             formInputs.forEach((input, index) => {
                 input.style.animationDelay = `${index * 0.1}s`;
